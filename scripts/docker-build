@@ -1,5 +1,0 @@
-#!/bin/sh
-
-cd /src || return $?
-nix-env -iA nixpkgs.docker
-scripts/build
