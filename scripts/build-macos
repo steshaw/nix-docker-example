@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+d() {
+  docker run \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --rm \
+    -v "${PWD}:/src" \
+    nixos/nix /src/scripts/docker-build
+}
+
+d2() {
+  d | tee /dev/stderr | tail -n 1
+}
+
+output=$(d2)
+image=$(echo "${output}" | cut -d' ' -f3)
+docker run "${image}"

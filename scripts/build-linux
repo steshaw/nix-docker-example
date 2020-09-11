@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+output=$(build)
+echo "output=[[${output}]]"
+image=$(echo "${output}" | cut -d' ' -f3)
+docker run "${image}"
