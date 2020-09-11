@@ -1,9 +1,8 @@
-{ pkgs ? import <nixpkgs> {}
-}:
+{ pkgs ? import <nixpkgs> { } }:
+
 pkgs.dockerTools.buildLayeredImage {
-  name = "only-hello";
+  name = "hello-docker";
   config = {
-    platforms = [];
+    Cmd = [ "${pkgs.hello}/bin/hello" ];
   };
-  contents = [ pkgs.hello ];
 }

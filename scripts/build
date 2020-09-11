@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+base='https://github.com/NixOS/nixpkgs-channels'
+revision="f9567594d5af2926a9d5b96ae3bada707280bec6"
+export NIX_PATH="nixpkgs=${base}/archive/${revision}.tar.gz"
+
+nix-build
+fred=$(docker load --input result)
+echo "fred=[[${fred}]]"
+image=$(echo "${fred}" | cut -d' ' -f3)
+docker run "${image}"
