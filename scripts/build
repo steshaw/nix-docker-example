@@ -4,4 +4,4 @@ set -euo pipefail
 
 output=$(build-0 | tee /dev/stderr | tail -1)
 image=$(echo "${output}" | cut -d' ' -f3)
-docker run "${image}"
+docker run "${image}" hello

@@ -2,10 +2,7 @@
     system = "x86_64-linux";
   }
 }:
-
 pkgs.dockerTools.buildLayeredImage {
-  name = "hello-docker";
-  config = {
-    Cmd = [ "${pkgs.hello}/bin/hello" ];
-  };
+  name = "only-hello";
+  contents = [ pkgs.hello ];
 }
