@@ -1,6 +1,9 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> {
+    system = "x86_64-linux";
+  }
+}:
 
-pkgs.dockerTools.buildLayeredImage {
+pkgs.dockerTools.buildImage {
   name = "hello-docker";
   config = {
     Cmd = [ "${pkgs.hello}/bin/hello" ];

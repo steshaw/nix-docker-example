@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-output=$(build | tee /dev/stderr | tail -1)
-image=$(echo "${output}" | cut -d' ' -f3)
-docker run "${image}"

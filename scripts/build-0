@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+set -x
+
+base='https://github.com/NixOS/nixpkgs-channels'
+revision="f9567594d5af2926a9d5b96ae3bada707280bec6"
+export NIX_PATH="nixpkgs=${base}/archive/${revision}.tar.gz"
+
+nix-build
+docker load --input result

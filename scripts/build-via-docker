@@ -7,7 +7,7 @@ d() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     --rm \
     -v "${PWD}:/src" \
-    steshaw/nix-docker:6 sh -c 'cd /src && scripts/build'
+    steshaw/nix-docker:6 sh -c 'cd /src && scripts/build-0'
 }
 
 d2() {
